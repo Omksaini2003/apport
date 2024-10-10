@@ -1,11 +1,11 @@
 import '../App.css';
 import Dropdown from './Dropdown/Dropdown';
 
-const Navbar = () => {
+const Navbar = ({setGroupBy}) => {
   return (
     <div>
         <div className='navbar'>
-            <Dropdown/>
+            <Dropdown setGroupBy={setGroupBy}/>
         </div>
     </div>
   )

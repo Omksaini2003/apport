@@ -1,0 +1,77 @@
+/* Styles for the card */
+.card {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 16px;
+    width: 300px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    position: relative;
+  }
+  
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .card-id {
+    font-weight: bold;
+    color: #777;
+  }
+  
+  .card-avatar {
+    display: flex;
+    align-items: center;
+  }
+  
+  .avatar-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+  
+  /* Title styles */
+  .card-title {
+    font-size: 1.2rem;
+    color: #333;
+    margin: 10px 0;
+  }
+  
+  /* Tags section */
+  .card-tags {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .tag {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    padding: 4px 8px;
+    margin-right: 8px;
+  }
+  
+  .icon-tag {
+    background-color: #ccc;
+  }
+  
+  .icon {
+    font-size: 1.2rem;
+    color: white;
+  }
+  
+  .text-tag {
+    background-color: #f1f1f1;
+    color: #777;
+  }
+  
+  /* Add padding inside the tag */
+  .text-tag {
+    padding: 6px 10px;
+    border-radius: 5px;
+  }
+  

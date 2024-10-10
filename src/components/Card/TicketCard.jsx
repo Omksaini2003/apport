@@ -1,8 +1,8 @@
 import React from "react";
 import "./Card.css";
-import toDo from "../../assets/To-do.svg";
+import toDo from "../../assets/Todo.svg";
 import backlog from "../../assets/Backlog.svg";
-import inPro from "../../assets/in-progress.svg";
+import inPro from "../../assets/In progress.svg";
 
 const TicketCard = ({ ticket, user }) => {
   const getStatusImage = (status) => {
@@ -23,11 +23,13 @@ const TicketCard = ({ ticket, user }) => {
       <div className="card-header">
         <span className="card-id">{ticket.id}</span>
         <div className="card-avatar">
-          <img
-            src={`https://api.example.com/users/${ticket.userId}/avatar`} // Placeholder URL
+          {/* <img
+          // src = {`https://xsgames.co/randomusers/avatar.php?g=pixel`}
+          // src = {`https://api.dicebear.com/7.x/pixel-art/svg`}
+            // src={`https://api.example.com/users/${ticket.userId}/avatar`} // Placeholder URL
             alt="Avatar"
             className="avatar-img"
-          />
+          /> */}
         </div>
       </div>
       <h2 className="card-title">{ticket.title}</h2>

@@ -6,7 +6,7 @@ import TicketWrapper from './components/TicketWrapper/TicketWrapper';
 function App() {
   const [tickets, setTickets] = useState([]);
   const [users, setUsers] = useState([]);
-  const [groupBy, setGroupBy] = useState('user'); // Default grouping
+  const [groupBy, setGroupBy] = useState('priority'); // Default grouping
   const [loading, setLoading] = useState(true);
 
   const fetchTicketData = async () => {
@@ -60,19 +60,28 @@ function App() {
   }
 
   const groupedTickets = groupTickets();
+console.log(groupedTickets)
 
   return (
-    <div className="App">
+    <div className="App" style={{ width: '100vw' }}>
+    <div style={{ width: '100vw', marginBottom: '20px' }}>
       <Navbar setGroupBy={setGroupBy} />
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', padding: '20px' }}>
-        {Object.entries(groupedTickets).map(([key, ticketGroup]) => (
+    </div>
+  
+    <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+      {/* Render Grouped Tickets */}
+      {Object.entries(groupedTickets).map(([key, ticketGroup]) => (
+        <div style={{ flex: '0 0 15%', margin: '0 10px' }} key={key}> {/* Margin added here */}
+        {/* <p>{ticketGroup.length}</p> */}
           <TicketWrapper
-            key={key}
+            style={{ width: '100%' }} // Ensure TicketWrapper takes full width of the container
             heading={groupBy === 'user' ? getUserName(key) : key}
             tickets={ticketGroup}
             users={users}
+            filterBy={{ type: groupBy, value: key }}
           />
-        ))}
+        </div>
+      ))}
       </div>
     </div>
   );

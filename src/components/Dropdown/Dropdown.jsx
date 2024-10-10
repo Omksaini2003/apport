@@ -1,11 +1,17 @@
 import React, { useState } from 'react';
 import './Dropdown.css'; // For CSS styling
-import drop from '../../assets/Display.svg'
-import down from '../../assets/down.svg'
+import drop from '../../assets/Display.svg';
+import down from '../../assets/down.svg';
 
 const Dropdown = () => {
   // State to track dropdown visibility
   const [isOpen, setIsOpen] = useState(false);
+
+  // State to track the selected option
+  const [selectedOption, setSelectedOption] = useState('Display');
+
+  // List of all options
+  const options = ['Display', 'Status', 'Priority'];
 
   // Function to toggle dropdown visibility
   const toggleDropdown = () => {
@@ -25,19 +31,40 @@ const Dropdown = () => {
     return () => window.removeEventListener('click', closeDropdown);
   }, []);
 
+  // Function to handle option selection
+  const handleOptionClick = (option) => {
+    setSelectedOption(option); // Update the selected option
+    setIsOpen(false); // Close the dropdown after selection
+  };
+
   return (
     <div className="navbar">
       <div className="dropdown">
         <button className="dropdown-button" onClick={toggleDropdown}>
-        <img className='display-img' src={drop} alt='drop'/>
-        Display
-        <img className='down-img' src={down} alt='down'/>
+          <img className='display-img' src={drop} alt='drop' />
+          {selectedOption} {/* Show the selected option */}
+          <img className='down-img' src={down} alt='down' />
         </button>
         {isOpen && (
           <div className="dropdown-content">
-            <a href="#">Link 1</a>
-            <a href="#">Link 2</a>
-            <a href="#">Link 3</a>
+            {options
+              .filter(option => option !== selectedOption) // Exclude the selected option
+              .map((option) => (
+                <div className="linker" key={option} onClick={() => handleOptionClick(option)}>
+                  <a href="#">
+                    <span className="grouping">
+                      {option === 'Display' ? 'Showing' : option === 'Status' ? 'Grouping' : 'Ordering'}
+                    </span>
+                    <span className="display-box">
+                      <span className="display">
+                        <img className='display-img' src={drop} alt='drop' />
+                        {option}
+                        <img className='down-img' src={down} alt='down' />
+                      </span>
+                    </span>
+                  </a>
+                </div>
+              ))}
           </div>
         )}
       </div>
@@ -46,3 +73,4 @@ const Dropdown = () => {
 };
 
 export default Dropdown;
+

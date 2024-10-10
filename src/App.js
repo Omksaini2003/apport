@@ -30,34 +30,47 @@ function App() {
   const value = [priority, status];
 
   return (
-    <div className="App" style={{width: '200px'}}>
+    // <div className="App" style={{width: '200px'}}>
       
-      <div style={{width: '100vw'}}>
+    //   <div style={{width: '100vw'}}>
+    //     <Navbar />
+    //   </div>
+    //   <div style={{display: 'flex', flexDirection: 'row', gap: '50px'}}>
+
+    //   {status.map((priorityValue) => (
+    //       <TicketWrapper
+    //         key={priorityValue} // Essential for performance and avoiding issues
+    //         style={{ display: 'flex', flex: 1,margin:'200px' }}
+    //         tickets={tickets}
+    //         users={users}
+    //         filterBy={{ type: type, value: priorityValue }}
+    //       />
+    //     ))}
+
+       
+    //   </div>
+    // </div>
+
+    <div className="App" style={{ width: '100vw' }}>
+      <div style={{ width: '100vw', marginBottom: '20px' }}>
         <Navbar />
       </div>
-      <div style={{display: 'flex', flexDirection: 'row', gap: '100px'}}>
-
-      {status.map((priorityValue) => (
-          <TicketWrapper
-            key={priorityValue} // Essential for performance and avoiding issues
-            style={{ display: 'flex', flex: 1 }}
-            tickets={tickets}
-            users={users}
-            filterBy={{ type: type, value: priorityValue }}
-          />
+      <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+        {status.map((priorityValue) => (
+          <div style={{ flex: '0 0 15%', margin: '0 10px' }} key={priorityValue}> {/* Margin added here */}
+            <TicketWrapper
+              style={{ width: '100%' }} // Ensure TicketWrapper takes full width of the container
+              tickets={tickets}
+              users={users}
+              filterBy={{ type: type, value: priorityValue }}
+            />
+          </div>
         ))}
-
-        {/* <TicketWrapper style={{display: 'flex' ,flex: 1}} tickets={tickets} users={users} filterBy={{ type: 'priority', value: 4 }}  />
-        <TicketWrapper style={{display: 'flex' ,flex: 1}} tickets={tickets} users={users} filterBy={{ type: 'priority', value: 3 }} />
-        <TicketWrapper style={{display: 'flex' ,flex: 1}} tickets={tickets} users={users} filterBy={{ type: 'priority', value: 2 }} />
-        <TicketWrapper style={{display: 'flex' ,flex: 1}} tickets={tickets} users={users} filterBy={{ type: 'priority', value: 1 }} />
-        <TicketWrapper style={{display: 'flex' ,flex: 1}} tickets={tickets} users={users} filterBy={{ type: 'priority', value: 0 }} /> */}
-
-        {/* <TicketList tickets={tickets} users={users} style={{display: 'flex',flex: 1}}/> */}
-        {/* <TicketList tickets={tickets} users={users} style={{display: 'flex',flex: 1}}/> */}
-        {/* <TicketList tickets={tickets} users={users} style={{display: 'flex',flex: 1}}/> */}
       </div>
     </div>
+    
+
+
   );
 }
 

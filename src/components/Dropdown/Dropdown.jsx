@@ -3,15 +3,16 @@ import './Dropdown.css'; // For CSS styling
 import drop from '../../assets/Display.svg';
 import down from '../../assets/down.svg';
 
-const Dropdown = () => {
+const Dropdown = ({setGroupBy}) => {
   // State to track dropdown visibility
   const [isOpen, setIsOpen] = useState(false);
 
   // State to track the selected option
-  const [selectedOption, setSelectedOption] = useState('Display');
+  const [selectedOption, setSelectedOption] = useState(setGroupBy[0]);
 
   // List of all options
   const options = ['Display', 'Status', 'Priority'];
+  const map = {'Display':'user', 'Status':'status', 'Priority':'priority'};
 
   // Function to toggle dropdown visibility
   const toggleDropdown = () => {
@@ -34,6 +35,7 @@ const Dropdown = () => {
   // Function to handle option selection
   const handleOptionClick = (option) => {
     setSelectedOption(option); // Update the selected option
+    setGroupBy(map[option]); // Update the groupBy state
     setIsOpen(false); // Close the dropdown after selection
   };
 

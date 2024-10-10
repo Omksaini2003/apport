@@ -64,3 +64,108 @@
     top: 4px;
   }
   
+
+
+
+  /* Basic reset for select */
+select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: white;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/b/bb/Chevron_down_font_awesome_white.svg');
+    background-position: right 10px center;
+    background-repeat: no-repeat;
+    background-size: 16px;
+    width: 200px;
+    cursor: pointer;
+}
+
+.custom-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.custom-dropdown::after {
+    content: '\25BC'; /* Unicode character for down arrow */
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    font-size: 14px;
+    color: #333;
+}
+
+select:focus {
+    outline: none;
+    border-color: #777;
+}
+
+.custom-dropdown select {
+    appearance: none;
+    padding-right: 40px; /* Make space for the down arrow */
+}
+.linker{
+  width:400px;
+}
+
+
+
+/* Linker container */
+.linker a {
+  display: flex;
+  justify-content: space-between; /* Pushes Grouping to the left and Display to the right */
+  align-items: center;
+  padding: 10px 16px;
+  font-size: 16px;
+  text-decoration: none;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: transparent; /* Transparent background for overall container */
+  transition: background-color 0.3s ease;
+}
+
+/* Style for Grouping on the left */
+.grouping {
+  display: flex;
+  align-items: center;
+}
+
+/* White box for Display */
+.display-box {
+  display: flex;
+  align-items: center;
+  background-color: #fff; /* White background */
+  padding: 6px 10px; /* Padding inside the white box */
+  border-radius: 4px; /* Rounded corners for the box */
+  border: 1px solid #ccc; /* Border for the white box */
+  width: 125px;
+}
+
+/* Style for Display text and icon inside the white box */
+.display {
+  display: flex;
+  align-items: center;
+}
+
+/* Image styling */
+.display-img, .down-img {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+}
+
+.down-img {
+  margin-left: 8px; /* Adds spacing to the left of the "Display" text */
+}
+
+/* Hover effect for the link */
+.linker a:hover {
+  background-color: #f1f1f1;
+}

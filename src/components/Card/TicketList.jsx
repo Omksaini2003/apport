@@ -1,35 +1,37 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import TicketCard from './TicketCard';
 
-const TicketList = () => {
-  const [tickets, setTickets] = useState([]);
-  const [users, setUsers] = useState([]);
-
-  // Fetch data from the API
-  const fetchTicketData = async () => {
-    try {
-      const response = await fetch('https://api.quicksell.co/v1/internal/frontend-assignment'); // Replace with your API URL
-      const data = await response.json();
-      setTickets(data.tickets);
-      setUsers(data.users);
-    } catch (error) {
-      console.error('Error fetching tickets:', error);
-    }
+const TicketList = ({ tickets, users }) => {
+  const sortTicketsByPriority = (data) => {
+    // Sort tickets by priority in decreasing order, and by title in lexicographical order if priorities are the same
+    const sortedTickets = data.tickets.sort((a, b) => {
+      if (b.priority === a.priority) {
+        return a.title.localeCompare(b.title);
+      }
+      return b.priority - a.priority;
+    });
+    
+    // Return the sorted tickets
+    return { ...data, tickets: sortedTickets };
   };
 
-  useEffect(() => {
-    fetchTicketData();
-  }, []);
+  // Sort tickets
+  sortTicketsByPriority({ tickets });
 
+  // Helper function to get user by ID
   const getUserById = (userId) => {
     return users.find((user) => user.id === userId);
   };
 
   return (
-    <div className="ticket-list">
+    <div className="ticket-list" style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
       {tickets.map((ticket) => {
         const user = getUserById(ticket.userId);
-        return <TicketCard key={ticket.id} ticket={ticket} user={user} />;
+        return (
+          <div key={ticket.id} style={{ width: '100%' }}>
+            <TicketCard ticket={ticket} user={user} />
+          </div>
+        );
       })}
     </div>
   );

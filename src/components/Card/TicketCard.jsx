@@ -1,8 +1,8 @@
 import React from "react";
 import "./Card.css";
-import toDo from "../../assets/To-do.svg";
+import toDo from "../../assets/ToDo.svg";
 import backlog from "../../assets/Backlog.svg";
-import inPro from "../../assets/in-progress.svg";
+import inPro from "../../assets/InProgress.svg";
 
 const TicketCard = ({ ticket, user }) => {
   const getStatusImage = (status) => {

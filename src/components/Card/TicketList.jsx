@@ -24,7 +24,7 @@ const TicketList = ({ tickets, users }) => {
   };
 
   return (
-    <div className="ticket-list" style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
+    <div className="ticket-list" style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
       {tickets.map((ticket) => {
         const user = getUserById(ticket.userId);
         return (
